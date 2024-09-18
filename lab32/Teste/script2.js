@@ -43,13 +43,25 @@ function proxima_pergunta()
     document.getElementById('select-perguntas').options.length = 0;
     document.getElementById('select2').options.length = 0;
     i=i+1;
-    
+    if(i>=2)
+    {
+        i=2;
+    }
     definir_pergunta();
 }
 function conferir()
 {
-    let a = i*3;
-    pontos = pontos + pont[a+aux];
+    let k = 0;
+    while(k<3)
+    {
+        let r = k*3;
+        let m = Number(selecao[k]);
+        m = m -1;
+        pontos = pontos + pont[m+k];
+
+
+        k = k+1;
+    }
+    document.getElementById('pontos').innerHTML = 'pontos:'+pontos;
 }
-document.getElementById('pontos').innerHTML = pontos;
 document.getElementById('op').innerHTML = aux;
