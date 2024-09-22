@@ -14,9 +14,9 @@ function definir_pergunta()
 
     document.getElementById('pergunta').innerHTML = perguntas[i];
     var select = document.getElementById("select-perguntas");
-    select.options[select.options.length] = new Option(respostas[a], '1');
-    select.options[select.options.length] = new Option(respostas[a+1], '2');
-    select.options[select.options.length] = new Option(respostas[a+2], '3');
+    select.options[select.options.length] = new Option(respostas[a], '0');
+    select.options[select.options.length] = new Option(respostas[a+1], '1');
+    select.options[select.options.length] = new Option(respostas[a+2], '2');
     
     document.getElementById('selecaoview').innerHTML = selecao;
     //opt2.value = "2";
@@ -56,8 +56,7 @@ function conferir()
     {
         let r = k*3;
         let m = Number(selecao[k]);
-        m = m -1;
-        pontos = pontos + pont[m+k];
+        pontos = pontos + pont[m+r];
 
 
         k = k+1;
