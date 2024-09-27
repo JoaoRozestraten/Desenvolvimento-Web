@@ -43,11 +43,20 @@ app.get('/about', (req, res) => {
 });
 //Rota para a pagina "upload"
 app.get('/upload', (req, res) => {
-    fs.writeFile('arquivoDeJoao.txt', data, (err) => {
-        if (err) throw err;
-      console.log('O arquivo ja foi criado, confira na pasta para ver se ele esta realmente la!');
-    });
-    res.sendFile(path.join(__dirname, 'public', 'upload.html'));
+    
+        res.sendFile(path.join(__dirname, 'public', 'upload.html'));
+});
+app.post('/upload', (req, res) => {
+    
+    let fileData = '';
+        req.on('data', chunk => {
+            fileData += chunk.toString();
+        });
+        req.on('end', () => {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+            res.end('Upload simulado com sucesso!');
+        });
 });
 
 app.use((req,res,next)=>{
