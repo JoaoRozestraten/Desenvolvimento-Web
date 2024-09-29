@@ -9,5 +9,11 @@
     <h1>Se vc chegou ate aqui eh porque digitou o link + upload</h1>
     <h2>FACA O UPLOAD do arquivo pelo terminal O metodo que o aluno usou para testar foi:</h2>
     <h2>Invoke-RestMethod -Uri "http://localhost:3000/upload" -Method Post -InFile "arquivotesto.txt" -ContentType "multipart/form-data"</h2>
+    <h1>OU MANDE PELO FORMULARIO</h1>
+    <form id="upload-form">
+        <input type="file" id="file-input" required />
+        <button type="submit">Enviar</button>
+    </form>
+    <script src="script.js"></script>
 </body>
 </html>
