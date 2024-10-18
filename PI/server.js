@@ -28,9 +28,19 @@ app.get('/', (req, res) => {
 // Rota para registrar novos usuários
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    users.push({ username, password: hashedPassword });//DENTRO DE USERS
-    res.redirect('/login.html'); // Redireciona para a página de login após o registro
+     // Verifique se o usuário já existe
+     const userExists = users.find(user => user.username === username);
+
+     if (userExists) {
+         // Se o nome de usuário já existir, envie uma resposta de erro
+         return res.send('Nome de usuário já está em uso. Tente outro.');
+     }
+ 
+     // Se o nome de usuário não existir, crie uma nova conta
+     const hashedPassword = await bcrypt.hash(password, 10);
+     users.push({ username, password: hashedPassword });
+ 
+     res.send('Registro concluído! Você já pode fazer login.');
 });
 
 // Rota de login
