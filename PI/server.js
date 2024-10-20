@@ -33,14 +33,14 @@ app.post('/register', async (req, res) => {
 
      if (userExists) {
          // Se o nome de usuário já existir, envie uma resposta de erro
-         return res.send('Nome de usuário já está em uso. Tente outro.');
+         return res.json({ success: false, message: 'Nome de usuário já está em uso. Tente outro.' });
      }
  
      // Se o nome de usuário não existir, crie uma nova conta
      const hashedPassword = await bcrypt.hash(password, 10);
      users.push({ username, password: hashedPassword });
  
-     res.send('Registro concluído! Você já pode fazer login.');
+     res.json({ success: true, message: 'Registro concluído! Você já pode fazer login.' });
 });
 
 // Rota de login
